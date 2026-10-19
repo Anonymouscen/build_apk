@@ -1,0 +1,5 @@
+{
+  "appId": "com.example.myvueapp",
+  "appName": "My Vue App",
+  "webDir": "dist"
+}
