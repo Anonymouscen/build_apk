@@ -35,7 +35,9 @@ jobs:
 
     # 5. 执行 Vue 项目打包 并 同步到 Capacitor Android 目录
     - name: Build Web & Sync Capacitor
-      run: npm run build && npx cap sync android
+    run: npm run build && npx cap sync android
+    env:
+      NODE_OPTIONS: --openssl-legacy-provider
 
     # 6. 编译 Android Debug APK
     - name: Build Android APK
