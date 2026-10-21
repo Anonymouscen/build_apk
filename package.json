@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "cross-env NODE_OPTIONS=--openssl-legacy-provider vue-cli-service build",
     "electron_build": "electron-packager ./dist/ --platform=win32 --arch=x64 --icon=./dist/favicon.ico --overwrite",
     "android_sync": "npm run build && npx cap sync android",
     "android_build": "npm run build && npx cap sync android && cd android && gradlew.bat assembleDebug"

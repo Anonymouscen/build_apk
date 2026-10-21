@@ -1,14 +1,49 @@
 <template>
   <div class="layout-container">
     <main class="preview_main">
-      <div class="btn_back" @click="goBack">BACK</div>
-      <swiper :options="swiperOption" class="swiper-container" v-if="previewImages.length > 0">
+      <div class="btn_back" @click="goBack">HOME</div>
+      <swiper ref="mySwiper" :options="swiperOption" class="swiper-container" v-if="previewImages.length > 0">
         <swiper-slide
           v-for="(image, index) in previewImages"
           :key="index"
           class="swiper-slide"
         >
           <div
+            v-if="type === 'f3' && index === 0"
+            class="slide-bg"
+            :style="{
+              backgroundImage: `url('${image}')`,
+            }"
+          >
+            <div v-for="(t, i) in 3" :key="i" :class="['point', 'point' + i]" @click="handlePointClick(i)"></div>
+          </div>
+          <div
+            v-else-if="type === 'f3' && index === 5"
+            class="slide-bg"
+            :style="{
+              backgroundImage: `url('${image}')`,
+            }"
+          >
+            <div class="video1">
+              <video src="@/assets/f3-26-l.mp4" controls></video>
+            </div>
+            <div class="video2">
+              <video src="@/assets/f3-26-r.mp4" controls></video>
+            </div>
+          </div>
+          <div
+            v-else-if="type === 'f3' && index === 8"
+            class="slide-bg"
+            :style="{
+              backgroundImage: `url('${image}')`,
+            }"
+          >
+            <div class="video3">
+              <video src="@/assets/f3-29.mp4" controls></video>
+            </div>
+          </div>
+          <div
+            v-else
             class="slide-bg"
             :style="{
               backgroundImage: `url('${image}')`,
@@ -28,6 +63,8 @@
 </template>
 
 <script>
+const POINT_SLIDE_MAP = [1, 4, 9]
+
 export default {
   name: "Preview",
   props: {
@@ -61,6 +98,28 @@ export default {
     }
   },
   methods: {
+    handlePointClick (i) {
+      // 获取对应的目标页索引
+      const targetIndex = POINT_SLIDE_MAP[i]
+
+      // 防止无效索引
+      if (targetIndex === undefined) {
+        return
+      }
+
+      // 获取 Swiper 实例
+      const swiperComponent = this.$refs.mySwiper
+      const swiper = swiperComponent && (
+        swiperComponent.swiper || swiperComponent.$swiper
+      )
+
+      if (!swiper || swiper.destroyed) {
+        return
+      }
+
+      // 切换到目标页，0 表示第一张图片
+      swiper.slideTo(targetIndex, 500)
+    },
     goBack() {
       this.$router.go(-1);
     },
@@ -74,12 +133,21 @@ export default {
         // 使用require.context动态获取指定文件夹下的所有图片
         const context = require.context('@/assets/', true, /\.(jpg|jpeg|png|gif|webp)$/i)
         const keys = context.keys()
+
+        console.log('keys: ', keys)
         
         // 筛选出指定type文件夹下的图片
-        const typeImages = keys.filter(key => {
-          const path = key.replace('./', '')
-          return path.startsWith(`${this.type}/`)
-        })
+        const typeImages = keys
+          .filter(key => {
+            const path = key.replace('./', '')
+            return path.startsWith(`${this.type}/`)
+          })
+          .sort((a, b) => {
+            return a.localeCompare(b, undefined, {
+              numeric: true,
+              sensitivity: 'base'
+            })
+          })
 
         console.log('typeImages: ', typeImages)
         
@@ -116,7 +184,7 @@ export default {
     .btn_back {
       position: absolute;
       top: 40px;
-      left: 40px;
+      right: 40px;
       z-index: 5;
       display: flex;
       align-items: center;
@@ -153,6 +221,7 @@ export default {
         justify-content: center;
         
         .slide-bg {
+          position: relative;
           width: 100%;
           height: 100%;
           min-height: 400px; /* 确保有最小高度 */
@@ -160,6 +229,47 @@ export default {
           background-repeat: no-repeat;
           background-position: center;
           background-color: #fff; /* 添加背景色便于调试 */
+        }
+
+        .point {
+          position: absolute;
+          top: 670px;
+          left: 180px;
+          width: 475px;
+          height: 140px;
+
+          &1 {
+            left: 700px;
+          }
+          &2 {
+            left: 1235px;
+          }
+        }
+        .video1 {
+          position: absolute;
+          bottom: 78px;
+          left: 495px;
+          width: 259px;
+          height: 135px;
+        }
+        .video2 {
+          position: absolute;
+          bottom: 48px;
+          right: 100px;
+          width: 275px;
+          height: 152px;
+        }
+        .video3 {
+          position: absolute;
+          top: 755px;
+          left: 230px;
+          width: 717px;
+          height: 265px;
+        }
+
+        video {
+          width: 100%;
+          height: 100%;
         }
       }
     }

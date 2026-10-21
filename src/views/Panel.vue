@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <div class="btn_closesystem" @click="handleCloseSystem"></div>
+    <!-- <div class="btn_closesystem" @click="handleCloseSystem"></div> -->
     <div class="controls">
       <div :class="['control_item', item]" v-for="item in list" :key="item" @click="handleClickControl(item)"></div>
     </div>
@@ -12,7 +12,7 @@ export default {
   name: "Panel",
   data() {
     return {
-      list: ['SUNROOF', 'INTERIOR', 'LIGHTING', 'THERMALMANAGEMENT', 'FUELPOWER', 'PIPELINE', 'EXTERIOR', 'SEAT', 'HARNESS', 'EICSYSTEM', 'CHASSIS']
+      list: ['f1', 'f2', 'f3', 'f4', 'f5']
     };
   },
   methods: {
@@ -67,21 +67,14 @@ export default {
 
     .control_item {
       position: absolute;
-      width: 150px;
-      height: 40px;
+      width: 730px;
+      height: 180px;
 
-      &.SUNROOF { top: 208px; left: 125px; }
-      &.INTERIOR { top: 323px; left: 120px; }
-      &.LIGHTING { top: 452px; left: 120px; }
-      &.THERMALMANAGEMENT { top: 584px; left: 130px; width: 188px }
-      &.FUELPOWER { top: 680px; left: 130px; width: 200px }
-      &.PIPELINE { top: 798px; left: 130px; }
-
-      &.EXTERIOR { top: 470px; left: 1590px; }
-      &.SEAT { top: 562px; left: 1590px; }
-      &.HARNESS { top: 690px; left: 1590px; }
-      &.EICSYSTEM { top: 805px; left: 1600px; }
-      &.CHASSIS { top: 915px; left: 1590px; }
+      &.f1 { top: 208px; left: 180px; }
+      &.f2 { top: 208px; left: 990px; }
+      &.f3 { top: 495px; left: 180px; }
+      &.f4 { top: 495px; left: 990px; }
+      &.f5 { top: 770px; left: 180px; }
     }
   }
 }
