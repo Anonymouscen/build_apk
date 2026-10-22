@@ -1,6 +1,13 @@
 <template>
   <div id="app">
     <router-view/>
+    <!-- 移动端横屏提示遮罩（当用户竖屏时触发） -->
+    <div class="landscape-tip-overlay">
+      <div class="tip-content">
+        <div class="rotate-icon">📱</div>
+        <p>为了获得最佳体验，请将手机横向使用</p>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -32,237 +39,6 @@ li {
   color: #FFFFFF;
 }
 
-.myPopperClass {
-  background-color: #0F3058 !important;
-  border: 1px solid rgba(186, 208, 241, 0.1) !important;
-  box-sizing: border-box;
-  .el-select-dropdown__item {
-    color: rgba($color: #FFFFFF, $alpha: 0.8) !important;
-  }
-  .popper__arrow {
-    border-bottom-color: rgba(186, 208, 241, 0.1) !important;
-  }
-  .popper__arrow::after {
-    border-bottom-color: #0F3058 !important;
-  }
-  .el-scrollbar__wrap {
-    padding: 0 !important;
-  }
-  .el-select-dropdown__item.hover, .el-select-dropdown__item:hover {
-    background-color: rgba($color: #FFFFFF, $alpha: 0.2) !important;
-  }
-}
-
-.documentationClass {
-  background: none;
-  border-radius: 4px;
-  background-color: #072444 !important;
-  overflow: hidden;
-  .el-dialog__header {
-    padding: 15px 20px 10px 10px;
-  }
-  .el-dialog__body {
-    height: 640px;
-    padding: 10px 30px 20px;
-    color: #ffffff !important;
-    .projectDrawings-body {
-      width: 100%;
-      height: 100%;
-      .inputClass {
-        .el-input {
-          .el-input-group__prepend,
-          .el-input__inner {
-            padding-left: 30px !important;
-          }
-          .el-input-group__append,
-          .searchButton {
-            background-color: transparent !important;
-            border-color: rgba(4, 234, 255, 0.5);
-            color: #FFFFFF;
-          }
-        }
-        
-      }
-    }
-  }
-}
-.projectOverviewClass,
-.projectPartyBuildingClass {
-  background: none;
-  border-radius: 4px;
-  background-color: #072444 !important;
-  overflow: hidden;
-  .el-dialog__header {
-    padding: 15px 20px 10px 10px;
-  }
-  .el-dialog__body {
-    height: 640px;
-    padding: 6px 30px 20px;
-    color: #ffffff !important;
-    .projectDrawings-body {
-      width: 100%;
-      height: 100%;
-      .inputClass {
-        .el-input {
-          .el-input-group__prepend,
-          .el-input__inner {
-            padding-left: 30px !important;
-          }
-          .el-input-group__append,
-          .searchButton {
-            background-color: transparent !important;
-            border-color: rgba(4, 234, 255, 0.5);
-            color: #FFFFFF;
-          }
-        }
-      }
-    }
-  }
-}
-
-.locationDistributionDialogClass {
-  width: 1474px !important;
-  height: 728px !important;
-  margin-top: 0 !important;
-  position: absolute !important;
-  top: 50% !important;
-  left: 50% !important;
-  margin-top: -364px !important;
-  margin-left: -737px !important;
-  background: none;
-  border-radius: 4px;
-  background-color: #001629 !important;
-  overflow: hidden !important;
-  .el-dialog__header {
-    display: none;
-  }
-  .el-dialog__body {
-    width: 100%;
-    height: 100%;
-    padding: 0;
-  }
-}
-
-
-
-.engineeringCalendarToday {
-  .wh_content_all {
-    background-color: transparent !important;
-  }
-  .wh_top_changge li .wh_jiantou1,
-  .wh_top_changge li .wh_jiantou2 {
-    width: 8px !important;
-    height: 8px !important;
-  }
-  .wh_content .wh_content_item .wh_top_tag {
-    font-size: 0.9rem !important;
-    color: rgba($color: #B5BEC6, $alpha: 0.8);
-  }
-  .wh_content_item .wh_other_dayhide {
-    color: rgba($color: #FFFFFF, $alpha: 0.2) !important;
-  }
-  .wh_item_date:hover {
-    background: rgba($color: #000000, $alpha: 0.2) !important;
-    cursor: pointer;
-    border-radius: 100px;
-  }
-  .wh_content_item .wh_chose_day {
-    background: transparent !important;
-    border-radius: 100px;
-  }
-  .wh_content_item {
-    .wh_isToday {
-      background: transparent !important;
-      color: #fff !important;
-    }
-    //雷电
-    .thunderbolt {
-      color: #60CEF4 !important;
-      position: relative;
-    }
-    .thunderbolt::after {
-      content: "";
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-      background-color: #60CEF4 !important;
-      position: absolute;
-      left: 50%;
-      bottom: 11%;
-      margin-left: -2px;
-    }
-    //多因素
-    .multivariate {
-      color: #EAFAFF !important;
-      position: relative;
-    }
-    .multivariate::after {
-      content: "";
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-      background-color: #EAFAFF !important;
-      position: absolute;
-      left: 50%;
-      bottom: 11%;
-      margin-left: -2px;
-    }
-    //高温
-    .highTemperature {
-      color: #FFA552 !important;
-      position: relative;
-    }
-    .highTemperature::after {
-      content: "";
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-      background-color: #FFA552 !important;
-      position: absolute;
-      left: 50%;
-      bottom: 11%;
-      margin-left: -2px;
-    }
-    //其他
-    .other {
-      color: #48C86B !important;
-      position: relative;
-    }
-    .other::after {
-      content: "";
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-      background-color: #48C86B !important;
-      position: absolute;
-      left: 50%;
-      bottom: 11%;
-      margin-left: -2px;
-    }
-  }
-}
-
-
-.selectBox {
-  width: 100px;
-  height: 29px;
-  line-height: 29px;
-  .el-input {
-    width: 100%;
-    height: 100%;
-    line-height: 29px;
-    background-color: transparent;
-  }
-  .el-input--small .el-input__inner {
-    background-color: transparent;
-    height: 100% !important;
-    line-height: 28px !important;
-    border: none;
-    color: rgba($color: #FFFFFF, $alpha: 0.8);
-  }
-}
-
-
 /* 设置滚动条的样式 */
 div::-webkit-scrollbar {
   width: 3px;
@@ -278,15 +54,67 @@ div::-webkit-scrollbar-thumb {
   background: #17356a;
 }
 
+/* 默认情况下（横屏时）隐藏提示 */
+.landscape-tip-overlay {
+  display: none;
+}
 
-.selectDate {
-  .el-icon-date, .el-range__close-icon {
-    position: relative;
-    top: -5px;
+/* 当检测到设备处于【竖屏 (portrait)】状态时显示遮罩 */
+@media screen and (orientation: portrait) {
+  .landscape-tip-overlay {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(15, 23, 42, 1); /* 深色沉浸式背景 */
+    color: #ffffff;
+    z-index: 999999;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
   }
-  .el-range-input {
-    background-color: transparent !important;
-    color: #C0C4CC !important;
+
+  .tip-content {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  .rotate-icon {
+    font-size: 56px;
+    margin-bottom: 26px;
+    /* 图标旋转提示动画 */
+    animation: rotateAnimation 1.5s ease-in-out infinite alternate;
+  }
+
+  .tip-content p {
+    font-size: 26px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin: 0;
+  }
+}
+
+/* 手机旋转动画 */
+@keyframes rotateAnimation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(90deg);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 </style>
