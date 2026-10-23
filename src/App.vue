@@ -82,16 +82,16 @@ div::-webkit-scrollbar-thumb {
   }
 
   .rotate-icon {
-    font-size: 56px;
-    margin-bottom: 26px;
+    font-size: 66px;
+    margin-bottom: 30px;
     /* 图标旋转提示动画 */
     animation: rotateAnimation 1.5s ease-in-out infinite alternate;
   }
 
   .tip-content p {
-    font-size: 26px;
+    font-size: 32px;
     font-weight: 500;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
     margin: 0;
   }
 }
