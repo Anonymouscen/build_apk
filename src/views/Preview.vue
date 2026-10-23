@@ -249,10 +249,17 @@ export default {
             height: calc(530 / 2160 * 100%);
           }
 
-          video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+          .video1, .video2, .video3 {
+            position: absolute;
+            overflow: hidden;
+            
+            video {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              display: block;
+              zoom: 0.75;
+            }
           }
         }
       }
@@ -264,7 +271,7 @@ export default {
 .swiper-button-prev {
   color: #007aff;
   &.swiper-button-disabled { opacity: 0; }
-  &:after { font-size: 36px; }
+  &:after { font-size: 50px; }
 }
 .swiper-button-next { right: 5px; }
 .swiper-button-prev { left: 5px; }
