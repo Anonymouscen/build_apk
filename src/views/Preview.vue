@@ -59,6 +59,7 @@ export default {
     return {
       swiperOption: {
         resistanceRatio: 0,
+        effect: 'fade',
         navigation: {
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev',
@@ -106,14 +107,6 @@ export default {
       // 点击热区跳转前也可以顺便暂停一下
       this.pauseAllVideos();
       swiper.slideTo(targetIndex, 500);
-    },
-    handlePointClick (i) {
-      const targetIndex = POINT_SLIDE_MAP[i]
-      if (targetIndex === undefined) return
-      const swiperComponent = this.$refs.mySwiper
-      const swiper = swiperComponent && (swiperComponent.swiper || swiperComponent.$swiper)
-      if (!swiper || swiper.destroyed) return
-      swiper.slideTo(targetIndex, 500)
     },
     goBack() {
       this.pauseAllVideos();
@@ -269,10 +262,63 @@ export default {
 
 .swiper-button-next,
 .swiper-button-prev {
-  color: #007aff;
-  &.swiper-button-disabled { opacity: 0; }
-  &:after { font-size: 50px; }
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 20px;
+  background: linear-gradient(to right, #107bba 0%, #79c7e2 100%);
+  border-radius: 5px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+
+  &.swiper-button-disabled { 
+    opacity: 0.3; 
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  &:hover {
+    transform: translateY(-50%) translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  }
+
+  &:active {
+    transform: translateY(-50%) translateY(0);
+  }
+
+  &:after { 
+    content: none !important; 
+  }
 }
-.swiper-button-next { right: 5px; }
-.swiper-button-prev { left: 5px; }
+
+/* 左右定位微调 */
+.swiper-button-prev { 
+  left: 15px; 
+  
+  &::before {
+    content: "BACK";
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+  }
+}
+
+.swiper-button-next { 
+  right: 15px; 
+  
+  &::before {
+    content: "NEXT";
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+  }
+}
 </style>
