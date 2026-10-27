@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <router-view/>
+    <transition name="fade" mode="out-in">
+      <router-view />
+    </transition>
     <!-- 移动端横屏提示遮罩（当用户竖屏时触发） -->
     <div class="landscape-tip-overlay">
       <div class="tip-content">
@@ -51,6 +53,16 @@ div::-webkit-scrollbar-track {
 div::-webkit-scrollbar-thumb {
   border-radius: 2px;
   background: #17356a;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.15s ease;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 
 /* 默认情况下（横屏时）隐藏提示 */

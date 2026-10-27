@@ -1,11 +1,8 @@
 <template>
   <div class="wrapper">
-    <!-- 核心：这个盒子严格按照 3840:2160 (16:9) 比例自适应缩放并居中 -->
     <div class="ratio-box">
-      <!-- 原先的背景图通过 img 标签加载，完美保持比例 -->
       <img src="../assets/panel_bg.jpg" class="bg-img" alt="panel background" />
 
-      <!-- 控制按钮直接以 ratio-box 为参考系，坐标基于 3840 * 2160 设计图计算 -->
       <div class="controls">
         <div :class="['control_item', item]" v-for="item in list" :key="item" @click="handleClickControl(item)"></div>
       </div>
@@ -61,7 +58,6 @@ export default {
     max-height: calc(100vw * (2160 / 3840));
     margin: auto;
 
-    /* 背景图片充满整个 ratio-box，保持原比例不拉伸 */
     .bg-img {
       width: 100%;
       height: 100%;

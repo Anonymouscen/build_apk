@@ -8,16 +8,14 @@
           :key="index"
           class="swiper-slide"
         >
-          <!-- 核心：这个盒子严格按照 16:9 比例自适应缩放，且在视口中居中 -->
           <div class="ratio-box">
             <img :src="image" class="slide-img" alt="preview" />
 
-            <!-- f3 类型的交互热区和视频，直接以 ratio-box 为参考系 -->
             <template v-if="type === 'f3'">
               <div v-if="index === 0">
                 <div v-for="(t, i) in 3" :key="i" :class="['point', 'point' + i]" @click="handlePointClick(i)"></div>
               </div>
-              <div v-else-if="index === 5">
+              <div v-else-if="index === 2">
                 <div class="video1">
                   <video src="@/assets/f3-26-l.mp4" controls></video>
                 </div>
@@ -25,7 +23,7 @@
                   <video src="@/assets/f3-26-r.mp4" controls></video>
                 </div>
               </div>
-              <div v-else-if="index === 8">
+              <div v-else-if="index === 5">
                 <div class="video3">
                   <video src="@/assets/f3-29.mp4" controls></video>
                 </div>
