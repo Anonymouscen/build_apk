@@ -58,6 +58,12 @@ export default {
       swiperOption: {
         resistanceRatio: 0,
         effect: 'fade',
+        fadeEffect: {
+          crossFade: true // 开启交叉淡入淡出，避免层叠残留
+        },
+        observer: true, // 启动动态检查器，有 DOM 变化时自动更新
+        observeParents: true,
+        watchSlidesProgress: true,
         navigation: {
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev',
@@ -299,7 +305,7 @@ export default {
 
 /* 左右定位微调 */
 .swiper-button-prev { 
-  left: 15px; 
+  left: 5px; 
   
   &::before {
     content: "BACK";
@@ -310,7 +316,7 @@ export default {
 }
 
 .swiper-button-next { 
-  right: 15px; 
+  right: 5px; 
   
   &::before {
     content: "NEXT";
